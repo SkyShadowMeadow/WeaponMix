@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core.Operators
 {
-    public class AsyncOperatorExecutor : MonoBehaviour
+    public class AsyncOperatorExecutor
     {
         public IEnumerator Execute(params IAsyncOperation[] operations)
         {
