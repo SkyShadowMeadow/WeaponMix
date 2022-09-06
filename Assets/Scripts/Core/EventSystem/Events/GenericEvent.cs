@@ -1,20 +1,22 @@
 using System;
 using System.Collections.Generic;
+using Core.EventSystem.Dispose;
 
 namespace Core.EventSystem.Events
 {
-	public static class GenericEvent<T> 
+	public static class GenericEvent<T>
 	{
 		private static Dictionary<string, List<Action<T>>> _events = new();
 
-		public static void Add(string name, Action<T> action)
+		public static DisposeContainer Add(string key, Action<T> action)
 		{
-			if (!_events.ContainsKey(name))
+			if (!_events.ContainsKey(key))
 			{
-				_events.Add(name, new List<Action<T>>());
+				_events.Add(key, new List<Action<T>>());
 			}
 
-			_events[name].Add(action);
+			_events[key].Add(action);
+			return new DisposeContainer(() => Remove(key, action));
 		}
 
 		public static void Remove(string name, Action<T> action)

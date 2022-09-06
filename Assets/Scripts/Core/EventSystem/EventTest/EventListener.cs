@@ -1,14 +1,13 @@
-using Core.EventSystem.EventManager;
 using TMPro;
 using UnityEngine;
 
-namespace Core.EventTest
+namespace Core.EventSystem.EventTest
 {
 	public class EventListener : MonoBehaviour
 	{
 		private void Awake()
 		{
-			EventManager.Add<int>("AddNumberTest", ChangeText);
+			EventManager.EventManager.Add<int>(TestEnum.AddNumberTest, ChangeText);
 		}
 
 		public void ChangeText(int i)

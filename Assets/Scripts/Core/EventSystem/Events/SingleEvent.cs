@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.EventSystem.Dispose;
 
 namespace Core.EventSystem.Events
 {
@@ -7,7 +8,7 @@ namespace Core.EventSystem.Events
 	{
 		private static Dictionary<string, List<Action>> _events = new();
 
-		public static void Add(string key, Action action)
+		public static DisposeContainer Add(string key, Action action)
 		{
 			if (!_events.ContainsKey(key))
 			{
@@ -15,6 +16,7 @@ namespace Core.EventSystem.Events
 			}
 
 			_events[key].Add(action);
+			return new DisposeContainer(() => Remove(key, action));
 		}
 
 		public static void Remove(string key, Action action)
