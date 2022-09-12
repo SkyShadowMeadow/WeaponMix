@@ -37,6 +37,8 @@
 /[Ll]ogs/*
 /[Uu]ser[Ss]ettings/*
 /[Rr]ecordings/*
+/[Jj]ohn Farmer/*
+/[Pp]olygonDungeon/*
 
 # Ignore thumbnails created by windows
 Thumbs.db
@@ -59,3 +61,6 @@ ExportedObj/
 *.VC.db
 
 # Ignore icon folder
+Assets/JohnFarmer
+Assets/PolygonDungeon
+Assets/StoneUI
